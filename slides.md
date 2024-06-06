@@ -865,5 +865,14 @@ image: https://cover.sli.dev
  - "Lift" the expensive component to a parent where it will be rendered **less often**.
  - Then pass the expensive component **down as a prop**.
 
-
+---
+layout: image-right
+image: '/images/lecture.png'
+---
+# Thanks For Listening!
+## Tal Moskovich
+<img src='/images/qrcode_github.com.png' class='w-20 m-auto pt-10' />
+<p class='text-center'><a href='https://github.com/talmoskovich/ReactNext2024'>Code & Slides repo</a></p>
+<img src='/images/qrcode_tmosko.com.png' class='w-20 m-auto pt-10' />
+<p class='text-center'><a href='https://tmosko.com/hello'>Contact Me</a></p>
 
