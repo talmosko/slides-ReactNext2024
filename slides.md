@@ -859,7 +859,7 @@ function ContextWrapper({ form, heavyComponent }) {
 </div>
 ---
 layout: image-right
-image: `/developer.webp`
+image: /developer.webp
 ---
 
 # From Props Drilling to Component Drilling
