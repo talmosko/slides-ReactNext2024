@@ -19,9 +19,10 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/guide/syntax#mdc-syntax
 mdc: true
-background: /images/Hero.jpg
+background: Hero.jpg
 fonts:
   sans: rubik
+download: true
 ---
 
 # Enhancing React Performance: Mastering Re-render Optimization
@@ -29,7 +30,7 @@ fonts:
 ## Tal Moskovich
 
 <div class="flex pt-12 justify-center">
-  <img src='images/Site-Logo_H_ReactNext_website.png' width=100 />
+  <img src='/Site-Logo_H_ReactNext_website.png' width=100 />
 </div>
 
 <style>
@@ -50,7 +51,7 @@ transition: slide-down
 ---
 
 # What Is the Most Joyful Thing in React?
-<img src='images/react-logo.svg' width=300 class='m-auto' />
+<img src='/react-logo.svg' width=300 class='m-auto' />
 
 <style>
   h1
@@ -67,7 +68,7 @@ transition: slide-down
 
 ---
 # Avoiding Unnecessary <br> Re-rendering
-<img src='images/refresh.png' width=150 class='m-auto' />
+<img src='/refresh.png' width=150 class='m-auto' />
 
 <style>
   h1
@@ -155,7 +156,7 @@ layout: center
 ---
 
 # Just Plain React!
-<img src='images/awesome.png' width=200 class='m-auto pt-10' />
+<img src='/awesome.png' width=200 class='m-auto pt-10' />
 
 
 <style>
@@ -167,7 +168,6 @@ layout: center
 </style>
 ---
 layout: two-cols
-image: /images/profile.png
 class: self-center
 ---
 # Hello, I'm Tal
@@ -180,12 +180,12 @@ class: self-center
 - 💡 **Proactivity Advocate**
 
 <div class='flex pt-22 justify-start items-center'>
-<img src='images/enpitech.svg' class='h-20 -ml-8'/>
-<img src='images/lotechni.png' class='w-25'/>
+<img src='/enpitech.svg' class='h-20 -ml-8'/>
+<img src='/lotechni.png' class='w-25'/>
 </div>
 
 ::right::
-<img src='images/profile.png' class='w-80 m-auto' />
+<img src='/profile.png' class='w-80 m-auto' />
 
 ---
 layout: two-cols-header
@@ -860,7 +860,7 @@ function ContextWrapper({ form, heavyComponent }) {
 </div>
 ---
 layout: image-right
-image: images/developer.webp
+image: `/developer.webp`
 ---
 
 # From Props Drilling to Component Drilling
@@ -876,12 +876,12 @@ image: images/developer.webp
 </v-clicks>
 ---
 layout: image-right
-image: '/images/lecture.png'
+image: '/lecture.png'
 ---
 # Thanks For Listening!
 ## Tal Moskovich
-<img src='/images/qrcode_github.com.png' class='w-20 m-auto pt-10' />
+<img src='/qrcode_github.com.png' class='w-20 m-auto pt-10' />
 <p class='text-center'><a href='https://github.com/talmoskovich/ReactNext2024'>Code & Slides repo</a></p>
-<img src='/images/qrcode_tmosko.com.png' class='w-20 m-auto pt-10' />
+<img src='/qrcode_tmosko.com.png' class='w-20 m-auto pt-10' />
 <p class='text-center'><a href='https://tmosko.com/hello'>Contact Me</a></p>
 
