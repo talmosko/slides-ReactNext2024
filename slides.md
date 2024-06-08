@@ -22,7 +22,6 @@ mdc: true
 background: Hero.jpg
 fonts:
   sans: rubik
-download: true
 ---
 
 # Enhancing React Performance: Mastering Re-render Optimization
