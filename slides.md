@@ -166,8 +166,9 @@ layout: center
   }
 </style>
 ---
-layout: image-right
+layout: two-cols
 image: /images/profile.png
+class: self-center
 ---
 # Hello, I'm Tal
 <br>
@@ -178,10 +179,13 @@ image: /images/profile.png
 - 🎧 **Podcaster & Lecturer** @ lotechni.dev
 - 💡 **Proactivity Advocate**
 
-<div class='flex pt-22 justify-center items-center'>
-<img src='images/enpitech.svg' class='h-25'/>
-<img src='images/lotechni.png' class='w-30'/>
+<div class='flex pt-22 justify-start items-center'>
+<img src='images/enpitech.svg' class='h-20 -ml-8'/>
+<img src='images/lotechni.png' class='w-25'/>
 </div>
+
+::right::
+<img src='images/profile.png' class='w-80 m-auto' />
 
 ---
 layout: two-cols-header
@@ -856,15 +860,20 @@ function ContextWrapper({ form, heavyComponent }) {
 </div>
 ---
 layout: image-right
-image: https://cover.sli.dev
+image: images/developer.webp
 ---
 
 # From Props Drilling to Component Drilling
 
+<v-clicks>
+ 
  - If you give React the same element you gave it on the last render, **it won't bother re-rendering** that element.
+ 
  - "Lift" the expensive component to a parent where it will be rendered **less often**.
+ 
  - Then pass the expensive component **down as a prop**.
 
+</v-clicks>
 ---
 layout: image-right
 image: '/images/lecture.png'
