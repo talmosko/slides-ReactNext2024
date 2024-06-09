@@ -188,7 +188,6 @@ class: self-center
 
 ---
 layout: two-cols-header
-class: flex flex-col m-5 justify-center -mt-3
 transition: slide-down
 
 ---
@@ -196,7 +195,7 @@ transition: slide-down
 # Let's Start with a Quick(?) Example
 
 ::left::
-
+<div class= "absolute top-35">
 ````md magic-move {lines: true}
 ```tsx {2}
 function App() {
@@ -220,32 +219,60 @@ function App() {
   return (
     <FormContext.Provider value={[state, setState]}>
         <Form />
-        <HeavyComponent /> /* A busy-awaited component */
+        <HeavyComponent />
     </FormContext.Provider>
   );
-}
-```
-```tsx {11-15}
-function App() {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-        <Form />
-        <HeavyComponent /> /* A busy-awaited component */
-    </FormContext.Provider>
-  );
-}
-
-function Form() {
-  const [state, setState] = useContext(FormContext);
-  // ...just a basic form
 }
 ```
 ````
+</div>
 
 ::right::
+<div class="absolute top-35">
+<v-click>
+````md magic-move {lines: true}
+```tsx {1-9}
+function Form() {
+  const [state, setState] = useContext(FormContext);
+
+  function handleChange(e) { ... }
+
+  return (
+      <input... />
+  );
+}
+```
+```tsx {11-20}
+function Form() {
+  const [state, setState] = useContext(FormContext);
+
+  function handleChange(e) { ... }
+
+  return (
+      <input... />
+  );
+}
+
+function HeavyComponent() {
+  busyWait(200);
+  const randomNumber = Math.random() * 1000;
+  return (
+    <div>
+      <span>Heavy Component</span>
+      <span>{randomNumber.toFixed(2)}</span>
+    </div>
+  );
+};
+```
+````
+</v-click>
+</div>
+---
+---
+# Demo Time!
 <iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
+
+
 
 ---
 layout: two-cols-header
@@ -256,7 +283,7 @@ layout: two-cols-header
 ::left::
 <div class="flex justify-center items-center">
 
-<div class="absolute min-w-100">
+<div class="absolute top-35 min-w-100">
 ````md magic-move {lines: true}
 ```tsx
 function App() {
@@ -324,14 +351,14 @@ function App() {
 
 ::right::
 <div class="flex justify-center items-center">
-<div class='absolute' v-click='[0, 1]'>
+<div class='absolute top-35' v-click='[0, 1]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
 App
 ```
 </div>
-<div class='absolute' v-click='[1, 2]'>
+<div class='absolute top-35' v-click='[1, 2]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -340,7 +367,7 @@ App --> |State|P[FormContext.Provider]
 ```
 </div>
 
-<div class='absolute' v-click='[2, 4]'>
+<div class='absolute top-35' v-click='[2, 4]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -350,10 +377,10 @@ P -->C[HeavyComponent]
 ```
 </div>
 <div v-click="[3, 4]">
-<arrow x1="550" y1="500" x2="600" y2="450" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-12 right-100 transform text-orange-500 -rotate-45">Typing...</p>
+<arrow x1="550" y1="510" x2="600" y2="460" color="#953" width="2" arrowSize="1" />
+<p class="absolute bottom-10 right-100 transform text-orange-500 -rotate-45">Typing...</p>
 </div>
-<div class='absolute' v-click='[4, 5]'>
+<div class='absolute top-35' v-click='[4, 5]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -371,7 +398,7 @@ transition: slide-down
 # Maybe a Better One?
 
 ::left::
-<v-click>
+<div class="absolute top-24">
 ````md magic-move {lines: true}
 ```tsx{5,8,2}
 function App() {
@@ -418,8 +445,7 @@ function ContextWrapper({ children }) {
 }
 ```
 ````
-
-</v-click>
+</div>
 
 ::right::
 <iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
@@ -432,7 +458,7 @@ layout: two-cols-header
 ::left::
 <div class="flex justify-center items-center">
 
-<div class="absolute min-w-100">
+<div class="absolute top-25 min-w-100">
 ````md magic-move {lines: true}
 ```tsx
 function App() {
@@ -523,14 +549,14 @@ function ContextWrapper({ children }) {
 
 ::right::
 <div class="flex justify-center items-center">
-<div class='absolute' v-click='[0, 1]'>
+<div class='absolute top-25' v-click='[0, 1]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
 App
 ```
 </div>
-<div class='absolute' v-click='[1, 2]'>
+<div class='absolute top-25' v-click='[1, 2]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
@@ -541,7 +567,7 @@ App -.-> HeavyComponent
 ```
 </div>
 
-<div class='absolute' v-click='[2, 4]'>
+<div class='absolute top-25' v-click='[2, 4]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
@@ -557,7 +583,7 @@ App -.-> HeavyComponent
 <arrow x1="600" y1="500" x2="650" y2="450" color="#953" width="2" arrowSize="1" />
 <p class="absolute bottom-12 right-88 transform text-orange-500 -rotate-45">Typing...</p>
 </div>
-<div class='absolute' v-click='[4, 5]'>
+<div class='absolute top-25' v-click='[4, 5]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -654,7 +680,7 @@ transition: slide-down
 # Will It Also Work?
 
 ::left::
-<v-click>
+<div class="absolute top-25 min-w-100">
 ````md magic-move {lines: true}
 
 ```tsx{4,5}
@@ -701,7 +727,7 @@ function ContextWrapper({ form, heavyComponent }) {
 ```
 ````
 
-</v-click>
+</div>
 
 ::right::
 <iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
