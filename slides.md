@@ -268,7 +268,7 @@ function HeavyComponent() {
 ---
 ---
 # Demo Time!
-<iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
+<iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
 
 
 
@@ -450,7 +450,7 @@ function ContextWrapper({ children }) {
 ---
 ---
 # Demo Time!
-<iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
+<iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
 
 ---
 layout: two-cols-header
@@ -736,7 +736,7 @@ function ContextWrapper({ form, heavyComponent }) {
 ---
 ---
 # Demo Time!
-<iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
+<iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
 
 ---
 ---
