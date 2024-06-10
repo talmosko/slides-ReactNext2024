@@ -167,13 +167,14 @@ layout: center
 </style>
 ---
 layout: two-cols
-class: self-center
+class: self-center min-w-150 
 ---
 # Hello, I'm Tal
 <br>
 
 🔥 **Committing Code &** <br>
 **Pushing Personal Boundaries**
+
 - 🧑‍💻 **Front-end Developer** @ Enpitech
 - 🎧 **Podcaster & Lecturer** @ lotechni.dev
 - 💡 **Proactivity Advocate**
@@ -186,16 +187,23 @@ class: self-center
 ::right::
 <img src='/profile.png' class='w-80 m-auto' />
 
+<style>
+  p, li
+  {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+</style>
+
+
 ---
-layout: two-cols-header
 transition: slide-down
 
 ---
 
 # Let's Start with a Quick(?) Example
 
-::left::
-<div class= "absolute top-35">
+<v-click>
 ````md magic-move {lines: true}
 ```tsx {2}
 function App() {
@@ -224,14 +232,7 @@ function App() {
   );
 }
 ```
-````
-</div>
-
-::right::
-<div class="absolute top-35">
-<v-click>
-````md magic-move {lines: true}
-```tsx {1-9}
+```tsx
 function Form() {
   const [state, setState] = useContext(FormContext);
 
@@ -242,17 +243,7 @@ function Form() {
   );
 }
 ```
-```tsx {11-20}
-function Form() {
-  const [state, setState] = useContext(FormContext);
-
-  function handleChange(e) { ... }
-
-  return (
-      <input... />
-  );
-}
-
+```tsx
 function HeavyComponent() {
   busyWait(200);
   const randomNumber = Math.random() * 1000;
@@ -266,7 +257,14 @@ function HeavyComponent() {
 ```
 ````
 </v-click>
-</div>
+
+<style>
+*{
+    --slidev-code-font-size: 1.5rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
 ---
 ---
 # Demo Time!
@@ -276,14 +274,14 @@ function HeavyComponent() {
 
 ---
 layout: two-cols-header
+class: absolute top-25
 ---
 
 # So, What Do We Have Here?
 
 ::left::
-<div class="flex justify-center items-center">
 
-<div class="absolute top-35 min-w-100">
+<div class="absolute min-w-100 -ml-8">
 ````md magic-move {lines: true}
 ```tsx
 function App() {
@@ -309,14 +307,14 @@ function App() {
   return (
     <FormContext.Provider value={[state, setState]}>
      <Form />
-     <HeavyComponent /> /* A busy-awaited component */
+     <HeavyComponent />
     </FormContext.Provider>
   );
 }
 
 function Form() {
   const [state, setState] = useContext(FormContext);
-  // ...just a basic form
+  //...
 }
 ```
 ```tsx {13}
@@ -326,14 +324,14 @@ function App() {
   return (
     <FormContext.Provider value={[state, setState]}>
      <Form />
-     <HeavyComponent /> /* A busy-awaited component */
+     <HeavyComponent />
     </FormContext.Provider>
   );
 }
 
 function Form() {
   const [state, setState] = useContext(FormContext);
-  // ...just a basic form
+  //...
 }
 ```
 ```tsx
@@ -346,19 +344,18 @@ function App() {
 ```
 ````
 </div>
-</div>
-
 
 ::right::
-<div class="flex justify-center items-center">
-<div class='absolute top-35' v-click='[0, 1]'>
+<div class='absolute left-185'>
+<div class = 'flex justify-center items-start'>
+<div class='absolute' v-click='[0, 1]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
 App
 ```
 </div>
-<div class='absolute top-35' v-click='[1, 2]'>
+<div class='absolute' v-click='[1, 2]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -367,7 +364,7 @@ App --> |State|P[FormContext.Provider]
 ```
 </div>
 
-<div class='absolute top-35' v-click='[2, 4]'>
+<div class='absolute' v-click='[2, 4]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -376,11 +373,7 @@ P --> |State-UseContext|Form
 P -->C[HeavyComponent]
 ```
 </div>
-<div v-click="[3, 4]">
-<arrow x1="550" y1="510" x2="600" y2="460" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-10 right-100 transform text-orange-500 -rotate-45">Typing...</p>
-</div>
-<div class='absolute top-35' v-click='[4, 5]'>
+<div class='absolute' v-click='[4, 5]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -388,17 +381,26 @@ App
 ```
 </div>
 </div>
----
-layout: two-cols-header
-class: flex flex-col m-5 justify-center -mt-3
-transition: slide-down
+</div>
 
+<div class="absolute" v-click="[3, 4]">
+<arrow x1="580" y1="380" x2="620" y2="330" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-82 left-135 transform text-orange-500 -rotate-50">Typing...</p>
+</div>
+
+<style>
+*{
+    --slidev-code-font-size: 1.1rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+---
+transition: slide-down
 ---
 
 # Maybe a Better One?
 
-::left::
-<div class="absolute top-24">
+<div class="absolute top-25">
 ````md magic-move {lines: true}
 ```tsx{5,8,2}
 function App() {
@@ -424,16 +426,7 @@ function App() {
 }
 ```
 
-```tsx{3,6,10-18}
-function App() {
-  return (
-    <ContextWrapper>
-        <Form />
-        <HeavyComponent />
-    </ContextWrapper>
-  );
-}
-
+```tsx
 function ContextWrapper({ children }) {
   const [state, setState] = useState({});
 
@@ -447,18 +440,32 @@ function ContextWrapper({ children }) {
 ````
 </div>
 
-::right::
+<style>
+*{
+    --slidev-code-font-size: 1.5rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
+---
+---
+# Demo Time!
 <iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
+
 ---
 layout: two-cols-header
+class: absolute top-15
+
 ---
+
+<div class='-mt-6 -ml-8'>
 
 # How Did We Get Here?
 
-::left::
-<div class="flex justify-center items-center">
+</div>
 
-<div class="absolute top-25 min-w-100">
+::left::
+<div class="absolute min-w-100 -ml-8">
 ````md magic-move {lines: true}
 ```tsx
 function App() {
@@ -529,9 +536,7 @@ function App() {
   );
 }
 
-  /*
-  Re-rendered because state changing
-  */
+  /* Re-rendered because state changing */
 function ContextWrapper({ children }) {
   const [state, setState] = useState({});
 
@@ -544,19 +549,19 @@ function ContextWrapper({ children }) {
 ```
 ````
 </div>
-</div>
 
 
 ::right::
-<div class="flex justify-center items-center">
-<div class='absolute top-25' v-click='[0, 1]'>
+<div class='absolute left-175'>
+<div class = 'flex justify-center items-start'>
+<div class='absolute' v-click='[0, 1]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
 App
 ```
 </div>
-<div class='absolute top-25' v-click='[1, 2]'>
+<div class='absolute' v-click='[1, 2]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
@@ -567,7 +572,7 @@ App -.-> HeavyComponent
 ```
 </div>
 
-<div class='absolute top-25' v-click='[2, 4]'>
+<div class='absolute' v-click='[2, 4]'>
 
 ```mermaid {theme: 'dark', scale: 1}
 graph
@@ -579,11 +584,7 @@ App -.-> Form
 App -.-> HeavyComponent
 ```
 </div>
-<div v-click="[3, 4]">
-<arrow x1="600" y1="500" x2="650" y2="450" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-12 right-88 transform text-orange-500 -rotate-45">Typing...</p>
-</div>
-<div class='absolute top-25' v-click='[4, 5]'>
+<div class='absolute' v-click='[4, 5]'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -591,41 +592,26 @@ App -.-> HeavyComponent
 ```
 </div>
 </div>
+</div>
+<div class="absolute" v-click="[3, 4]">
+<arrow x1="600" y1="410" x2="650" y2="360" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-88 left-142 transform text-orange-500 -rotate-45">Typing...</p>
+</div>
+
+<style>
+*{
+    --slidev-code-font-size: 1rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
 ---
-layout: two-cols-header
 ---
 
 # How Isn't HeavyComponent Re-Rendered?
 
-::left::
 It's all about how React works!
 
-<div class="min-w-300">
-<v-clicks>
-
-- 🧳 **Props are Objects**
-
-- 📂 **Props are saved in the Fiber nodes** (the "Virtual DOM")
-
-Therefore:
-
-- 🔄 **Props Objects are re-created on each render**
-
-But what about `children`?
-
-- 🧩 **Children can be considered as a reference to other (rendered) Fiber nodes**
-
-- 🧬 **Children save their referential identity from the previous render**
-
-Therefore:
-
-- 🛡️ **Our HeavyComponent isn't re-rendered!**
-
-</v-clicks>
-</div>
-
-::right::
-<div class="absolute top-50 right-20 min-w-50">
+<div class="min-w-10 mt-20">
 ````md magic-move {at:'1'}
 ```tsx
 function Component(props) {
@@ -659,28 +645,49 @@ function Component
 ````
 </div>
 <div v-click="[1, 4]">
-<arrow x1="850" y1="170" x2="850" y2="200" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-25 right-20 transform text-orange-500 text-center">A reference to an object <br> in the Fiber node</p>
+<arrow x1="580" y1="170" x2="580" y2="200" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-20 right-65 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">A reference to an object <br> in the Fiber node</p>
 </div>
 <div v-click='5'>
-<arrow x1="850" y1="180" x2="850" y2="230" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-30 right-20 transform text-orange-500 text-center">ReactNode is actually a Fiber node</p>
+<arrow x1="750" y1="220" x2="750" y2="270" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-30 right-20 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">ReactNode is <br> actually a Fiber node</p>
 </div>
 
+<style>
+*{
+    --slidev-code-font-size: 2.5rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
 <!--
-Here is another comment.
+
+- 🧳 **Props are Objects**
+
+- 📂 **Props are saved in the Fiber nodes** (the "Virtual DOM")
+
+Therefore:
+
+- 🔄 **Props Objects are re-created on each render**
+
+But what about `children`?
+
+- 🧩 **Children can be considered as a reference to other (rendered) Fiber nodes**
+
+- 🧬 **Children save their referential identity from the previous render**
+
+Therefore:
+
+- 🛡️ **Our HeavyComponent isn't re-rendered!**
 -->
 ---
 layout: two-cols-header
-class: flex flex-col m-5 justify-center -mt-3
 transition: slide-down
 
 ---
 
 # Will It Also Work?
 
-::left::
-<div class="absolute top-25 min-w-100">
 ````md magic-move {lines: true}
 
 ```tsx{4,5}
@@ -704,16 +711,7 @@ function App() {
 }
 ```
 
-```tsx{4,5,10,15,16}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
-  );
-}
-
+```tsx{1,6,7}
 function ContextWrapper({ form, heavyComponent }) {
   const [state, setState] = useState({});
 
@@ -727,23 +725,37 @@ function ContextWrapper({ form, heavyComponent }) {
 ```
 ````
 
-</div>
+<style>
+*{
+    --slidev-code-font-size: 1.5rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
 
-::right::
+
+---
+---
+# Demo Time!
 <iframe v-click src='http://localhost:3000' class='w-full h-110'></iframe>
 
 ---
 ---
+
+<div class='-mt-7'>
+
 # OK, But How?
 Let's look at the code again:
+
+</div>
+
+
 ````md magic-move {lines: true}
 ```tsx{none}
 function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -763,8 +775,7 @@ function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -784,8 +795,7 @@ function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -800,13 +810,12 @@ function ContextWrapper({ form, heavyComponent }) {
   );
 }
 ```
-```tsx{15,16}
+```tsx{15,14}
 function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -821,13 +830,12 @@ function ContextWrapper({ form, heavyComponent }) {
   );
 }
 ```
-```tsx{15}
+```tsx{14}
 function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -842,13 +850,12 @@ function ContextWrapper({ form, heavyComponent }) {
   );
 }
 ```
-```tsx{4,10}
+```tsx{3,4,9,14}
 function App() {
   return (
     <ContextWrapper
         form={<Form />}
-        heavyComponent={<HeavyComponent />}
-    />
+        heavyComponent={<HeavyComponent />} />
   );
 }
 
@@ -865,24 +872,32 @@ function ContextWrapper({ form, heavyComponent }) {
 ```
 ````
 <div v-click="[1, 2]">
-<arrow x1="300" y1="200" x2="260" y2="200" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-43 left-80 text-orange-500 text-center">`form` gets a rendered (ReactNode) value</p>
+<arrow x1="380" y1="195" x2="330" y2="195" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-42 left-98 text-orange-500 text-center">`form` gets a rendered (ReactNode) value</p>
 </div>
 <div v-click="[2, 3]">
-<arrow x1="470" y1="216" x2="410" y2="216" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-47 left-120 text-orange-500 text-center">`heavyComponent` gets a rendered (ReactNode) value</p>
+<arrow x1="620" y1="216" x2="560" y2="216" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-47 left-155 text-orange-500 text-center">`heavyComponent` gets a <br> rendered (ReactNode) value</p>
 </div>
 <div v-click="[3,4]">
-<arrow x1="320" y1="400" x2="270" y2="400" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-31 left-82 text-orange-500 text-center">'form' and 'heavyComponent' serves as slots</p>
+<arrow x1="370" y1="445" x2="320" y2="445" color="#953" width="2" arrowSize="1" />
+<p class="absolute bottom-20 left-95 text-orange-500 text-center">'form' and 'heavyComponent' serves as slots</p>
 </div>
 <div v-click="[4,5]">
-<arrow x1="320" y1="400" x2="270" y2="400" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-31 left-82 text-orange-500 text-center">Typing in 'form' initiates state change</p>
+<arrow x1="370" y1="435" x2="320" y2="435" color="#953" width="2" arrowSize="1" />
+<p class="absolute bottom-23 left-95 text-orange-500 text-center">Typing in 'form' initiates state change</p>
 </div>
 <div v-click="[5,6]">
 <p class="absolute bottom-64 left-75 text-orange-500 text-center">Only 'Form' and 'ContextWrapper' are re-rendered! <br>And 'HeavyComponent' is "memoized"!</p>
 </div>
+
+<style>
+*{
+    --slidev-code-font-size: 1rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
 ---
 layout: image-right
 image: /developer.webp
@@ -899,6 +914,15 @@ image: /developer.webp
  - Then pass the expensive component **down as a prop**.
 
 </v-clicks>
+
+<style>
+  p
+  {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+</style>
+
 ---
 layout: image-right
 image: '/lecture.png'
