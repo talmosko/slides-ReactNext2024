@@ -41,7 +41,9 @@ fonts:
 </style>
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+# Hey there! 
+## I'm Tal
+and we're going to talk about whatever written here...
 -->
 
 ---
@@ -77,6 +79,15 @@ transition: slide-down
     line-height: 6rem;
   }
 </style>
+
+<!--
+It's so delightful to go over all the Effects, the data flow, and find this nasty thing that's causing a re-render.
+
+because who doesn't love a good mystery solved before the coffee gets cold? 🚀🔍
+
+And we have all the tools to solve it!
+-->
+
 ---
 layout: center
 transition: slide-down
@@ -149,6 +160,13 @@ transition: slide-down
     line-height: 7rem;
   }
 </style>
+
+<!--
+But here I wanna talk about a special thing 
+
+that everyone was waiting for.
+-->
+
 ---
 layout: center
 
@@ -195,6 +213,17 @@ class: self-center min-w-150
   }
 </style>
 
+<!--
+At Enpitech, 
+
+We are the good guys of the web, 
+
+we have a knack to build exciting web apps with Startups and companies alike.
+
+Lo Techni is a podcast and community of devs, 
+
+to gain new power skills that every developer should have, not just coding itself.
+-->
 
 ---
 transition: slide-down
@@ -264,6 +293,14 @@ function HeavyComponent() {
     --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
 }
 </style>
+
+<!--
+I try to demonstrate here a very big app, 
+
+with Context that wraps all the components.
+
+and two components that arn't connected to each other, or sharing any state.
+-->
 
 ---
 ---
@@ -662,7 +699,7 @@ function Component
 
 <!--
 
-- 🧳 **Props are Objects**
+- 🧳 **Props are Objects** - Destructuring
 
 - 📂 **Props are saved in the Fiber nodes** (the "Virtual DOM")
 
@@ -930,7 +967,7 @@ image: '/lecture.png'
 # Thanks For Listening!
 ## Tal Moskovich
 <img src='/qrcode_github.com.png' class='w-20 m-auto pt-10' />
-<p class='text-center'><a href='https://github.com/talmoskovich/ReactNext2024'>Code & Slides repo</a></p>
+<p class='text-center'><a href='https://github.com/talmosko/app-reactnext-2024'>Code & Slides repo</a></p>
 <img src='/qrcode_tmosko.com.png' class='w-20 m-auto pt-10' />
 <p class='text-center'><a href='https://tmosko.com/hello'>Contact Me</a></p>
 
