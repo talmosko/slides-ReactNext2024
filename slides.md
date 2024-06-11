@@ -668,11 +668,6 @@ function Component({...}) {
 }
 ```
 ```tsx
-function Component({...}) {
-  return (...)
-}
-```
-```tsx
 function Component
 ({children}:{children: ReactNode}) 
 {
@@ -681,11 +676,11 @@ function Component
 ```
 ````
 </div>
-<div v-click="[1, 4]">
+<div v-click="[1, 3]">
 <arrow x1="580" y1="170" x2="580" y2="200" color="#953" width="2" arrowSize="1" />
 <p class="absolute top-20 right-65 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">A reference to an object <br> in the Fiber node</p>
 </div>
-<div v-click='5'>
+<div v-click='4'>
 <arrow x1="750" y1="220" x2="750" y2="270" color="#953" width="2" arrowSize="1" />
 <p class="absolute top-30 right-20 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">ReactNode is <br> actually a Fiber node</p>
 </div>
