@@ -748,6 +748,18 @@ function App() {
 }
 ```
 
+```tsx{1,6}
+function ContextWrapper({ children }) {
+  const [state, setState] = useState({});
+
+  return (
+    <FormContext.Provider value={[state, setState]}>
+      {children}
+    </FormContext.Provider>
+  );
+}
+```
+
 ```tsx{1,6,7}
 function ContextWrapper({ form, heavyComponent }) {
   const [state, setState] = useState({});
