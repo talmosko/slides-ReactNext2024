@@ -310,6 +310,7 @@ and two components that arn't connected to each other, or sharing any state.
 -->
 
 ---
+transition: slide-down
 ---
 # Demo Time!
 <iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
@@ -417,7 +418,7 @@ P --> Form
 P -->C[HeavyComponent]
 ```
 </div>
-<div class='absolute' v-click='[4, 5]'>
+<div class='absolute' v-click='4'>
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
@@ -492,47 +493,56 @@ function ContextWrapper({ children }) {
 </style>
 
 ---
+transition: slide-down
+
+---
+# Did I Change Something?
+
+```tsx
+function App() {
+  return (
+    <ContextWrapper>
+        <Form />
+        <HeavyComponent />
+    </ContextWrapper>
+  );
+}
+
+function ContextWrapper({ children }) {
+  const [state, setState] = useState({});
+
+  return (
+    <FormContext.Provider value={[state, setState]}>
+      {children}
+    </FormContext.Provider>
+  );
+}
+```
+
+<style>
+*{
+    --slidev-code-font-size: 1rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
+---
+transition: slide-down
+
 ---
 # Demo Time!
+
 <iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
 
----
-layout: two-cols-header
-class: absolute top-15
 
 ---
-
-<div class='-mt-6 -ml-8'>
-
-# How Did We Get Here?
-
-</div>
-
-::left::
-<div class="absolute min-w-100 -ml-8">
+---
+# Did I Change Something?
+<div class='absolute w-200' v-click='[0, 2]'>
 ````md magic-move {lines: true}
 ```tsx
 function App() {
   return (
-    ...
-  );
-}
-```
-
-```tsx{3-6}
-function App() {
-  return (
-    <ContextWrapper>
-        <Form />
-        <HeavyComponent />
-    </ContextWrapper>
-  );
-}
-```
-
-```tsx{3,6,10-18}
-function App() {
-  return (
     <ContextWrapper>
         <Form />
         <HeavyComponent />
@@ -550,7 +560,8 @@ function ContextWrapper({ children }) {
   );
 }
 ```
-```tsx
+
+```tsx{15}
 function App() {
   return (
     <ContextWrapper>
@@ -560,27 +571,6 @@ function App() {
   );
 }
 
-function ContextWrapper({ children }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {children}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx
-function App() {
-  return (
-    <ContextWrapper>
-        <Form /> //Re-rendered because context changing
-        <HeavyComponent /> // 🤯 NOT RE-RENDERED
-    </ContextWrapper>
-  );
-}
-
-  /* Re-rendered because state changing */
 function ContextWrapper({ children }) {
   const [state, setState] = useState({});
 
@@ -594,20 +584,9 @@ function ContextWrapper({ children }) {
 ````
 </div>
 
+<div class='absolute' v-click='2'>
 
-::right::
-<div class='absolute left-175'>
-<div class = 'flex justify-center items-start'>
-<div class='absolute' v-click='[0, 1]'>
-
-```mermaid {theme: 'dark', scale: 1}
-graph
-App
-```
-</div>
-<div class='absolute' v-click='[1, 2]'>
-
-```mermaid {theme: 'dark', scale: 1}
+```mermaid {theme: 'dark', scale: 2}
 graph
 App --> ContextWrapper
 App -.-> Form
@@ -616,30 +595,10 @@ App -.-> HeavyComponent
 ```
 </div>
 
-<div class='absolute' v-click='[2, 4]'>
+<div class='flex m-auto text-center justify-center pt-80' v-click='3'>
 
-```mermaid {theme: 'dark', scale: 1}
-graph
-App --> ContextWrapper
-ContextWrapper --> |State|P[FormContext.Provider]
-P --> |State-UseContext|Form
-P -->HeavyComponent
-App -.-> Form
-App -.-> HeavyComponent
-```
-</div>
-<div class='absolute' v-click='[4, 5]'>
+## ContextWrapper `children`, <br> are actually SIBLINGS
 
-```mermaid {theme: 'dark', scale: 1.2}
-graph
-App -.-> HeavyComponent
-```
-</div>
-</div>
-</div>
-<div class="absolute" v-click="[3, 4]">
-<arrow x1="600" y1="410" x2="650" y2="360" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-88 left-142 transform text-orange-500 -rotate-45">Typing...</p>
 </div>
 
 <style>
@@ -648,6 +607,7 @@ App -.-> HeavyComponent
     --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
 }
 </style>
+
 ---
 ---
 
