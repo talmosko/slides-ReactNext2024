@@ -48,6 +48,12 @@ and we're going to talk about whatever written here...
 
 ---
 layout: center
+---
+
+<img src="/im-hungry.gif" class='w-500' />
+
+---
+layout: center
 transition: slide-down
 ---
 
@@ -87,6 +93,14 @@ because who doesn't love a good mystery solved before the coffee gets cold? 🚀
 
 And we have all the tools to solve it!
 -->
+
+---
+layout: center
+transition: slide-down
+---
+
+<img src="/breakComputer.gif" class='w-500' />
+
 
 ---
 layout: center
