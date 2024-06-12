@@ -609,20 +609,95 @@ App -.-> HeavyComponent
 </style>
 
 ---
+transition: none
 ---
 
 # How Isn't HeavyComponent Re-Rendered?
 
-It's all about how React works!
+## It's all about how React works!
 
-<div class="min-w-10 mt-20">
+<div class="absolute w-200 mt-5">
 ````md magic-move {at:'1'}
 ```tsx
 function Component(props) {
-  return (...)
+  return <Child />;
 }
+
+// Somewhere else in the code
+return <Component prop1={prop} />;
+```
+```tsx
+function Component(props) {
+  return React.createElement(Child, null);
+}
+
+// Somewhere else in the code
+return React.createElement(Component, {prop1: prop});
 ```
 
+```tsx
+const ChildFiber = {
+  type: Child,
+  child: null,
+  props: {}
+};
+
+const ComponentFiber = {
+  type: Component,
+  child: ChildFiber,
+  props: { prop1: prop }
+};
+
+```
+
+```tsx{9}
+const ChildFiber = {
+  type: Child,
+  child: null,
+  props: {}
+};
+
+const ComponentFiber = {
+  type: Component,
+  child: ChildFiber,
+  props: { prop1: prop }
+};
+
+```
+
+````
+</div>
+
+
+<div class='absolute left-150 top-40 color-orange text-center' v-click='3'>
+
+Hello, "VDOM"!
+
+```mermaid {theme: 'dark', scale: 2}
+graph
+Component --> Child
+
+```
+</div>
+
+<style>
+*{
+    --slidev-code-font-size: 1.4rem;
+    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
+}
+</style>
+
+
+---
+transition: none
+---
+
+# How Isn't HeavyComponent Re-Rendered?
+
+## It's all about how React works!
+
+<div class="min-w-10 mt-25">
+````md magic-move {at:'1'}
 ```tsx
 function Component(props) {
   return (...)
@@ -634,22 +709,31 @@ function Component({...}) {
   return (...)
 }
 ```
+
 ```tsx
-function Component
-({children}:{children: ReactNode}) 
-{
-  return (...)
+function Component({...}) {
+  return <Child />;
+}
+```
+
+```tsx
+function Component({children}) {
+  return <>{children}</>;
 }
 ```
 ````
 </div>
-<div v-click="[1, 3]">
-<arrow x1="580" y1="170" x2="580" y2="200" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-20 right-65 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">A reference to an object <br> in the Fiber node</p>
+<div v-click="[1, 2]">
+<arrow x1="580" y1="220" x2="580" y2="250" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-30 right-45 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">A reference to the <pre class='inline-block bg-gray/30 p-[0.1rem]'>props</pre> object <br> in the Fiber node</p>
 </div>
-<div v-click='4'>
-<arrow x1="750" y1="220" x2="750" y2="270" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-30 right-20 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">ReactNode is <br> actually a Fiber node</p>
+<div v-click="[2, 3]">
+<arrow x1="400" y1="420" x2="400" y2="370" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-100 right-90 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;">Will be rendered <br> when the parent re-renders</p>
+</div>
+<div v-click='3'>
+<arrow x1="650" y1="210" x2="650" y2="250" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-30 right-50 transform text-orange-500 text-center text-3xl" style="line-height: 2.25rem;"><pre class='inline-block bg-gray/30 p-[0.1rem]'>children</pre> is a <br> rendered Fiber node</p>
 </div>
 
 <style>
@@ -679,6 +763,30 @@ Therefore:
 
 - 🛡️ **Our HeavyComponent isn't re-rendered!**
 -->
+
+---
+---
+# How Isn't HeavyComponent Re-Rendered?
+
+## It's all about how React works!
+
+<div class='absolute'>
+
+```mermaid {theme: 'dark', scale: 2}
+graph
+App --> ContextWrapper
+App -.-> Form
+App -.-> HeavyComponent
+
+```
+</div>
+
+<div class='flex m-auto text-center justify-center pt-80'>
+
+## ContextWrapper `children`, <br> are actually SIBLINGS
+
+</div>
+
 ---
 layout: two-cols-header
 transition: slide-down
@@ -748,166 +856,6 @@ function ContextWrapper({ form, heavyComponent }) {
 ---
 # Demo Time!
 <iframe v-click src='http://localhost:5173/' class='w-full h-110'></iframe>
-
----
----
-
-<div class='-mt-7'>
-
-# OK, But How?
-Let's look at the code again:
-
-</div>
-
-
-````md magic-move {lines: true}
-```tsx{none}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx{4}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx{5}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx{15,14}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx{14}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-```tsx{3,4,9,14}
-function App() {
-  return (
-    <ContextWrapper
-        form={<Form />}
-        heavyComponent={<HeavyComponent />} />
-  );
-}
-
-function ContextWrapper({ form, heavyComponent }) {
-  const [state, setState] = useState({});
-
-  return (
-    <FormContext.Provider value={[state, setState]}>
-      {form}
-      {heavyComponent}
-    </FormContext.Provider>
-  );
-}
-```
-````
-<div v-click="[1, 2]">
-<arrow x1="380" y1="195" x2="330" y2="195" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-42 left-98 text-orange-500 text-center">`form` gets a rendered (ReactNode) value</p>
-</div>
-<div v-click="[2, 3]">
-<arrow x1="620" y1="216" x2="560" y2="216" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-47 left-155 text-orange-500 text-center">`heavyComponent` gets a <br> rendered (ReactNode) value</p>
-</div>
-<div v-click="[3,4]">
-<arrow x1="370" y1="445" x2="320" y2="445" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-20 left-95 text-orange-500 text-center">'form' and 'heavyComponent' serves as slots</p>
-</div>
-<div v-click="[4,5]">
-<arrow x1="370" y1="435" x2="320" y2="435" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-23 left-95 text-orange-500 text-center">Typing in 'form' initiates state change</p>
-</div>
-<div v-click="[5,6]">
-<p class="absolute bottom-64 left-75 text-orange-500 text-center">Only 'Form' and 'ContextWrapper' are re-rendered! <br>And 'HeavyComponent' is "memoized"!</p>
-</div>
-
-<style>
-*{
-    --slidev-code-font-size: 1rem;
-    --slidev-code-line-height: var(--slidev-code-font-size)*1.5;
-}
-</style>
 
 ---
 layout: image-right
