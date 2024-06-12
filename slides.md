@@ -291,7 +291,7 @@ function Form() {
 
 <div v-click="[3,4]">
 <arrow x1="500" y1="315" x2="450" y2="315" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-53 left-130 text-orange-500 text-center">Aren't share anything</p>
+<p class="absolute bottom-53 left-130 text-orange-500 text-center">Aren't sharing state</p>
 </div>
 
 <style>
@@ -597,7 +597,7 @@ App -.-> HeavyComponent
 
 <div class='flex m-auto text-center justify-center pt-80' v-click='3'>
 
-## ContextWrapper `children`, <br> are actually SIBLINGS
+## ContextWrapper's `children`, <br> are actually SIBLINGS
 
 </div>
 
@@ -783,7 +783,7 @@ App -.-> HeavyComponent
 
 <div class='flex m-auto text-center justify-center pt-80'>
 
-## ContextWrapper `children`, <br> are actually SIBLINGS
+## ContextWrapper's `children`, <br> are actually SIBLINGS
 
 </div>
 
