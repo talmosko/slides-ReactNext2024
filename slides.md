@@ -291,7 +291,7 @@ function Form() {
 
 <div v-click="[3,4]">
 <arrow x1="500" y1="315" x2="450" y2="315" color="#953" width="2" arrowSize="1" />
-<p class="absolute bottom-53 left-130 text-orange-500 text-center">Aren't sharing state</p>
+<p class="absolute bottom-53 left-130 text-orange-500 text-center">Don't share state</p>
 </div>
 
 <style>
