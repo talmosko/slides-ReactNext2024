@@ -275,7 +275,7 @@ function App() {
   );
 }
 ```
-```tsx
+```tsx{2}
 function Form() {
   const [state, setState] = useContext(FormContext);
 
@@ -286,20 +286,13 @@ function Form() {
   );
 }
 ```
-```tsx
-function HeavyComponent() {
-  busyWait(200);
-  const randomNumber = Math.random() * 1000;
-  return (
-    <div>
-      <span>Heavy Component</span>
-      <span>{randomNumber.toFixed(2)}</span>
-    </div>
-  );
-};
-```
 ````
 </v-click>
+
+<div v-click="[3,4]">
+<arrow x1="500" y1="315" x2="450" y2="315" color="#953" width="2" arrowSize="1" />
+<p class="absolute bottom-53 left-130 text-orange-500 text-center">Aren't share anything</p>
+</div>
 
 <style>
 *{
@@ -410,7 +403,7 @@ App
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
-App --> |State|P[FormContext.Provider]
+App --> P[FormContext.Provider]
 
 ```
 </div>
@@ -419,8 +412,8 @@ App --> |State|P[FormContext.Provider]
 
 ```mermaid {theme: 'dark', scale: 1.2}
 graph
-App --> |State|P[FormContext.Provider]
-P --> |State-UseContext|Form
+App --> P[FormContext.Provider]
+P --> Form
 P -->C[HeavyComponent]
 ```
 </div>
@@ -435,8 +428,8 @@ App
 </div>
 
 <div class="absolute" v-click="[3, 4]">
-<arrow x1="580" y1="380" x2="620" y2="330" color="#953" width="2" arrowSize="1" />
-<p class="absolute top-82 left-135 transform text-orange-500 -rotate-50">Typing...</p>
+<arrow x1="580" y1="320" x2="620" y2="270" color="#953" width="2" arrowSize="1" />
+<p class="absolute top-67 left-135 transform text-orange-500 -rotate-50">Typing...</p>
 </div>
 
 <style>
