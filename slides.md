@@ -222,8 +222,8 @@ class: self-center min-w-150
 <style>
   p, li
   {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.75rem;
+    line-height: 2.85rem;
   }
 </style>
 
@@ -443,7 +443,7 @@ App
 transition: slide-down
 ---
 
-# Maybe a Better One?
+# Maybe a Better Shot?
 
 <div class="absolute top-25">
 ````md magic-move {lines: true}
@@ -496,7 +496,7 @@ function ContextWrapper({ children }) {
 transition: slide-down
 
 ---
-# Did I Change Something?
+# Did I Change Anything?
 
 ```tsx
 function App() {
@@ -537,7 +537,7 @@ transition: slide-down
 
 ---
 ---
-# Did I Change Something?
+# Did I Change Anything?
 <div class='absolute w-200' v-click='[0, 2]'>
 ````md magic-move {lines: true}
 ```tsx
