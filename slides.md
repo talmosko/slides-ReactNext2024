@@ -597,7 +597,7 @@ App -.-> HeavyComponent
 
 <div class='flex m-auto text-center justify-center pt-80' v-click='3'>
 
-## ContextWrapper's `children`, <br> are actually SIBLINGS
+## ContextWrapper's `children`, <br> are actually its SIBLINGS
 
 </div>
 
@@ -783,7 +783,7 @@ App -.-> HeavyComponent
 
 <div class='flex m-auto text-center justify-center pt-80'>
 
-## ContextWrapper's `children`, <br> are actually SIBLINGS
+## ContextWrapper's `children`, <br> are actually its SIBLINGS
 
 </div>
 
