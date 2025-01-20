@@ -29,7 +29,7 @@ fonts:
 ## Tal Moskovich
 
 <div class="flex pt-12 justify-center">
-  <img src='/frontendistim.png' width=150 />
+  <img src='/frontendistim.png' width=00 />
 </div>
 
 <style>
@@ -46,11 +46,6 @@ fonts:
 and we're going to talk about whatever written here...
 -->
 
-<!-- ---
-layout: center
----
-
-<img src="/im-hungry.gif" class='w-500' /> -->
 
 ---
 layout: center
