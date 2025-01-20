@@ -29,7 +29,7 @@ fonts:
 ## Tal Moskovich
 
 <div class="flex pt-12 justify-center">
-  <img src='/Site-Logo_H_ReactNext_website.png' width=100 />
+  <img src='/frontendistim.png' width=150 />
 </div>
 
 <style>
@@ -46,11 +46,11 @@ fonts:
 and we're going to talk about whatever written here...
 -->
 
----
+<!-- ---
 layout: center
 ---
 
-<img src="/im-hungry.gif" class='w-500' />
+<img src="/im-hungry.gif" class='w-500' /> -->
 
 ---
 layout: center
@@ -207,12 +207,12 @@ class: self-center min-w-150
 🔥 **Committing Code &** <br>
 **Pushing Personal Boundaries**
 
-- 🧑‍💻 **Front-end Developer** @ Enpitech
+- 🧑‍💻 **Front-end Developer** @ Imagen.ai
 - 🎧 **Podcaster & Lecturer** @ lotechni.dev
 - 💡 **Proactivity Advocate**
 
-<div class='flex pt-22 justify-start items-center'>
-<img src='/enpitech.svg' class='h-20 -ml-8'/>
+<div class='flex pt-20 justify-start items-center gap-15'>
+<img src='/imagen.svg' class='h-20'/>
 <img src='/lotechni.png' class='w-25'/>
 </div>
 
