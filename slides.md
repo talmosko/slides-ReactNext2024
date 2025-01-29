@@ -878,8 +878,6 @@ image: /developer.webp
 </style>
 
 ---
-layout: image-right
-image: '/lecture.png'
 ---
 # Thanks For Listening!
 ## Tal Moskovich
